@@ -45,7 +45,7 @@ int main( int argc, char* argv[] )
  
     int blockSize, gridSize;
 
-    vecAdd<<<ceil(n/1024.0), 1024>>>(d_a, d_b, d_c, n);
+    vecAdd<<<ceil(n-1/1024.0 + 1), 1024>>>(d_a, d_b, d_c, n);
  
     cudaMemcpy( h_c, d_c, bytes, cudaMemcpyDeviceToHost );
  
